@@ -2,7 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const Theme = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
 
   useEffect(() => {
     if (theme === "dark") {
@@ -18,7 +20,10 @@ const Theme = () => {
   }, [theme]);
   return (
     <>
-      <button onClick={() => setTheme(theme ==="light" ? "dark" : "light")}>
+      <button
+        className="rounded-3xl bg-yellow-500 p-2 text-center m-10 "
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      >
         ThemeChanger
       </button>
     </>
